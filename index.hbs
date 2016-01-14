@@ -20,8 +20,37 @@
 
 {{! The main content area on the homepage }}
 <main id="content" class="content" role="main">
+    
+<div class="row">
+    <div class="col-md-12">
+            <meta name="description" content="{{meta_description}}" />
+    </div>
+    <div class="col-md-12">
+            <meta name="description" content="{{meta_description}}" />
+    </div>
+</div>
 
-    {{! The tag below includes the post loop - partials/loop.hbs }}
-    {{> "loop"}}
+<!-- This is the post loop - each post will be output using this markup -->
+ 
+<div class="row"> <!-- RECENT PROJECTS START -->
+  <div class="col-md-4">
+     {{#foreach posts}}
+     <article class="{{post_class}}">
+     <header class="post-header">
+         <h2><a href="{{url}}">{{title}}</a></h2>
+     </header>
+     <section class="post-excerpt">
+          <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">...</a></p>
+      </section>
+      <footer class="post-meta">
+         {{#if author.image}}<img src="{{author.image}}" alt="Author image" />{{/if}}
+         {{author}}
+         {{tags prefix=" on "}}
+         <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+     </footer>
+    </article>
+    {{/foreach}}
+    </div>
+  </div>
 
 </main>
