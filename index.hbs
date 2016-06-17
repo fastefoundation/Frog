@@ -2,55 +2,84 @@
 {{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
 
 {{! The big featured header }}
+
+<!--
 <header class="main-header {{#if @blog.cover}}" style="background-image: url({{@blog.cover}}){{else}}no-cover{{/if}}">
-    <nav class="main-nav overlay clearfix">
-        {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>{{/if}}
-        {{#if @blog.navigation}}
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-        {{/if}}
-    </nav>
     <div class="vertical">
         <div class="main-header-content inner">
             <h1 class="page-title">{{@blog.title}}</h1>
-            <h2 class="page-description">{{@blog.description}}</h2>
         </div>
     </div>
     <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
 </header>
+-->
+<header> <!-- New Header-->
+  <div class="main-header-content inner">
+      <h1 class="page-title">{{@blog.title}}</h1>
+      <h2 class="page-description">{{@blog.description}}</h2>
+  </div>
+</header>
 
 {{! The main content area on the homepage }}
 <main id="content" class="content" role="main">
-    
-<div class="row">
-    <div class="col-md-12">
-            <meta name="description" content="{{meta_description}}" />
-    </div>
-    <div class="col-md-12">
-            <meta name="description" content="{{meta_description}}" />
-    </div>
-</div>
 
-<!-- This is the post loop - each post will be output using this markup -->
- 
-<div class="row"> <!-- RECENT PROJECTS START -->
-  <div class="col-md-4">
-     {{#foreach posts}}
-     <article class="{{post_class}}">
-     <header class="post-header">
-         <h2><a href="{{url}}">{{title}}</a></h2>
-     </header>
-     <section class="post-excerpt">
-          <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">...</a></p>
-      </section>
-      <footer class="post-meta">
-         {{#if author.image}}<img src="{{author.image}}" alt="Author image" />{{/if}}
-         {{author}}
-         {{tags prefix=" on "}}
-         <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
-     </footer>
-    </article>
-    {{/foreach}}
+<div class="container"> <!-- Main Body content for landing page -->
+  <h2>About</h2>
+  <hr>
+    <div class="col-md-8"> <!-- Mission -->
+            <p>The Faste Foundation is a 501(c)3 non-profit design organization. We support and inspire creative design through open community collaborations that foster personal integrity, leadership, and respect for others.
+              <br>
+              Our work has deep roots at the origins of human-centered design. We work with nonprofit partners and foundations to advance the social impact of design, technology, and design education. This mission definitely needs to be updated, but basically the content goes here.<p/>
+    </div>
+    <div class="col-md-4"> <!-- About -->
+      <img src="pic_mountain.jpg" alt="Mountain View" style="width:304px;height:228px;">
+      <p><a href="url">Click here</a> to learn more about designer Rolf Faste (1943-2003).</p>
     </div>
   </div>
 
+
+  <div class="container"> <!-- Projects -->
+    <h2>Ongoing Projects</h2>
+    <hr>
+    <div class="col-md-4"> <!-- Project 01 -->
+      {{#posts.[0]}}
+      <article class="{{post_class}}">
+      <header class="post-header">
+          <h2><a href="{{url}}">{{title}}</a></h2>
+      </header>
+      <section class="post-excerpt">
+           <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">...</a></p>
+       </section>
+       <p><b><a href="{{url}}">Click here to learn more <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"> </span></a></b></p>
+     </article>
+     {{/posts.[0]}}
+    </div>
+    <div class="col-md-4"> <!-- Project 02 -->
+      {{#posts.[1]}}
+      <img src="{{image}}" class="img-responsive" alt="Responsive image" style="width:250px;height:250px;">
+      <article class="{{post_class}}">
+      <header class="post-header">
+          <h2><a href="{{url}}">{{title}}</a></h2>
+      </header>
+      <section class="post-excerpt">
+           <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">...</a></p>
+       </section>
+       <p><b><a href="{{url}}">Click here to learn more <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"> </span></a></b></p>
+     </article>
+     {{/posts.[1]}}
+    </div>
+    <div class="col-md-4"> <!-- Project 03 -->
+            {{#posts.[2]}}
+            <article class="{{post_class}}">
+            <header class="post-header">
+                <h2><a href="{{url}}">{{title}}</a></h2>
+            </header>
+            <section class="post-excerpt">
+                 <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">...</a></p>
+             </section>
+             <p><b><a href="{{url}}">Click here to learn more <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"> </span></a></b></p>
+           </article>
+           {{/posts.[2]}}
+    </div>
+</div> <!-- /container -->
 </main>
